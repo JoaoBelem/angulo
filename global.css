@@ -1,0 +1,104 @@
+body{
+  margin: 0;
+  font-family: 'Montserrat';
+}
+h1{
+  font-size: 4rem;
+  margin: 2rem 0;
+}
+.container{
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+#display{
+  display: block;
+  /* border: 1px solid; */
+  border-radius: 50%;
+  box-shadow: 0 0 5px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+#valorGrau{
+  font-size: 2rem;
+}
+
+#guess{
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+#guess input{
+  border: 1px solid;
+  border-radius: .5rem;
+  padding: .5rem;
+  font-size: 24px;
+}
+
+#guess button{
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: .5rem;
+  transition: all .3s;
+  font-family: 'Montserrat';
+  font-size: 1rem;
+}
+
+button:hover{
+  background-color: #cdcdcd;
+}
+
+#displayTentativas{
+  margin: .5rem 0 0;
+}
+
+#displayRespostas{
+  display: grid;
+  gap: .5rem;
+  background-color: #333;
+}
+
+#displayAjuda{
+  margin-top: 1rem;
+}
+
+.helpChild{
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
+  gap: .2rem;
+  margin-bottom: .2rem;
+}
+.helpChild div{
+  background-color: #353535;
+  border-radius: .5rem;
+  padding: .6rem;
+  color: white;
+}
+
+.window{
+  display: none;
+  /* display: flex; */
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.windowWin{
+  padding: 2rem;
+  border-radius: 1rem;
+  min-width: 300px;
+  height: 400px;
+  background-color: #fff;
+  text-align: center;
+}
+
+h2{
+  margin: 0;
+}

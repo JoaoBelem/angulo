@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ângulo</title>
+  <link rel="stylesheet" href="./global.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Ângulo</h1>
+    <canvas id="display" width="250" height="250"></canvas>
+    <span id="valorGrau">0</span>
+
+    <form id="guess" name="guess">
+      <input min="1" max="360" type="number">
+      <button>Palpite!</button>
+    </form>
+    <p id="displayTentativas">Tentativas: <span id="contadorTentativas">0</span></p>
+
+    <div id="displayAjuda">
+    </div>
+  </div>
+
+  <div class="window">
+    <div class="windowWin">
+      <h2>Você ganhou!!! 🎉🎉🎉</h2>
+      
+      <button>Jogar Novamente</button>
+    </div>
+  </div>
+
+  <script src="script.js" type="module"></script>
+</body>
+
+</html>
