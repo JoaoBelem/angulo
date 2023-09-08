@@ -1,5 +1,5 @@
-@import url('/css/binds.css');
-@import url('/css/dark.css');
+@import url('/public/css/binds.css');
+@import url('/public/css/dark.css');
 
 body {
   margin: 0;
@@ -127,7 +127,7 @@ button:disabled:hover{
   aspect-ratio: 1 / 1;
   width: 2.5rem;
   cursor: pointer;
-  background: url('/img/close.svg')center center no-repeat #fff;
+  background: url('/public/img/close.svg')center center no-repeat #fff;
   transition: transform .3s;
 }
 .close:hover{

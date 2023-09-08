@@ -24,7 +24,7 @@ export function clearHelper() {
 
   tentativasFeitas = 0;
 
-  if (data.tries) {
+  if (data && data.tries) {
     totalTentativas = +data.tries;
   } else {
     totalTentativas = 4;

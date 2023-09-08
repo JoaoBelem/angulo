@@ -8,11 +8,9 @@ export default function doCanvas() {
     data = JSON.parse(localStorage.config);
   }
 
-  if (data.min) min = +data.min;
-  else min = 30;
+  if (data && data.min) {min = +data.min} else min = 30;
 
-  if (data.max) max = +data.max;
-  else max = 330;
+  if (data && data.max) {max = +data.max} else max = 330;
 
   angulo = Math.floor(Math.random() * (max - min + 1) + min);
   34;
