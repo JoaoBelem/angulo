@@ -1,21 +1,42 @@
 import { angulo } from './canvas.js';
 
-const windowWin = document.querySelector('.windowWin');
+const windowWin = document.getElementById('windowWin');
+const windowLose = document.getElementById('windowLose');
 
 const displayAjuda = document.getElementById('displayAjuda');
 const contadorTentativas = document.getElementById('contadorTentativas');
 
-let totalTentativas = 4;
+let totalTentativas;
+
+let data;
+if (localStorage.config) {
+  data = JSON.parse(localStorage.config);
+}
+
+data ? (totalTentativas = +data.tries) : (totalTentativas = 4);
+
 let tentativasFeitas = 0;
 
 export function clearHelper() {
+  if (localStorage.config) {
+    data = JSON.parse(localStorage.config);
+  }
+
   tentativasFeitas = 0;
+
+  if (data.tries) {
+    totalTentativas = +data.tries;
+  } else {
+    totalTentativas = 4;
+  }
+
   contadorTentativas.innerText = `${tentativasFeitas}/${totalTentativas}`;
   displayAjuda.innerHTML = null;
 }
 
 export default function doForm() {
   clearHelper();
+  totalTentativas = 4;
   //*
   const form = document.forms.guess;
 
@@ -44,12 +65,11 @@ export default function doForm() {
   form.onsubmit = (e) => {
     e.preventDefault();
     const valor = form.querySelector('input').value;
-    if (!valor) {
-      console.log('digite algo');
-    } else if (valor != angulo) {
+    if (valor !== '' && valor != angulo) {
       if (tentativasFeitas + 1 == totalTentativas) {
-        //* PERDEU
-        console.log('perdeu');
+        //! PERDEU
+        windowLose.querySelector('.valor').innerText = angulo + 'º';
+        windowLose.parentElement.classList.add('show');
         form.querySelector('button').setAttribute('disabled', true);
       }
       form.querySelector('input').value = null;
@@ -71,24 +91,27 @@ export default function doForm() {
       }
 
       if (a - b <= 5) {
-        dica = 'Fervendo!🔥';
+        dica = 'Fervendo! 🔥';
       } else if (a - b < 15) {
-        dica = 'Quente!🥵';
+        dica = 'Quente! 🥵';
       } else if (a - b < 30) {
-        dica = 'Esquentando!♨';
+        dica = 'Esquentando! 🌭';
       } else if (a - b < 50) {
-        dica = 'Morno!';
+        dica = 'Meio termo! 👽';
+      } else if (a - b < 100) {
+        dica = 'Frio! 🧊';
       } else {
-        dica = 'Frio!🥶';
+        dica = 'Congelando! 🥶';
       }
 
       createHelp(valor + 'º', moreOrLess, dica);
-    } else {
+    } else if (valor !== '') {
       //* GANHOU
       tentativasFeitas++;
       contadorTentativas.innerText = `${tentativasFeitas}/${totalTentativas}`;
-      
-      console.log('Ganhou');
+
+      windowWin.querySelector('.valor').innerText = angulo + 'º';
+
       createHelp(valor + 'º', '😎', 'Ganhou!🎉');
       windowWin.parentElement.classList.add('show');
       form.querySelector('button').setAttribute('disabled', true);

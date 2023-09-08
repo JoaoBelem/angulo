@@ -1,20 +1,22 @@
-import doCanvas from "./canvas.js";
-import {clearHelper} from "./form.js";
-import { closeWindow } from "./window.js";
+import doCanvas from './canvas.js';
+import { clearHelper } from './form.js';
+import { closeWindow } from './window.js';
+
+const btn = document.querySelectorAll('.restartBtn');
+const form = document.forms.guess;
+const palpiteBtn = form.querySelector('button');
+
+export function restart() {
+  doCanvas();
+  closeWindow();
+  
+  palpiteBtn.removeAttribute('disabled');
+  form.reset();
+  clearHelper();
+}
 
 export default function doScript() {
-  const btn = document.querySelectorAll('.restartBtn');
-  const form = document.forms.guess;
-  const palpiteBtn = form.querySelector('button');
-
-  btn.forEach(item => {
-    item.addEventListener('click', () => {
-      doCanvas();
-      clearHelper();
-      closeWindow();
-
-      palpiteBtn.removeAttribute('disabled');
-      form.reset();
-    });
-  })
+  btn.forEach((item) => {
+    item.addEventListener('click', restart);
+  });
 }

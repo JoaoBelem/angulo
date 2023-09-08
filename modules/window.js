@@ -1,3 +1,5 @@
+import { restart } from './restart.js';
+
 const windows = document.querySelectorAll('.window');
 
 export function closeWindow() {
@@ -7,8 +9,34 @@ export function closeWindow() {
 }
 
 export default function doWindow() {
-  windows.forEach((item) => {
-    const closeBtn = item.querySelector('.close');
-    closeBtn.addEventListener('click', closeWindow);
+  const closeBtn = document.querySelectorAll('.close');
+  closeBtn.forEach((item) => {
+    item.addEventListener('click', closeWindow);
+  });
+
+  //* WINDOW CONFIGURAÇÕES
+  const windowConfig = document.getElementById('windowConfig');
+  const formConfig = windowConfig.querySelector('form');
+
+  document.getElementById('configBtn').addEventListener('click', () => {
+    windowConfig.parentElement.classList.add('show');
+  });
+
+  const submitConfigs = windowConfig.querySelector('button[type="submit"]');
+
+  submitConfigs.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const configValores = Array.from(formConfig.elements)
+      .filter((item) => {
+        if (item.tagName === 'INPUT' && item.value !== '') return true;
+      })
+      .reduce((acumulador, item) => {
+        return { ...acumulador, [item.name]: item.value };
+      }, null);
+
+    if (configValores !== null) localStorage['config'] = JSON.stringify(configValores);
+    windowConfig.parentElement.classList.remove('show');
+    restart();
   });
 }

@@ -7,6 +7,7 @@
   <title>Ângulo</title>
   <link rel="stylesheet" href="./global.css">
 
+  <link rel="shortcut icon" href="/img/logo.svg" type="image/x-icon">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,7 @@
     <!-- <span id="valorGrau">0</span> -->
 
     <form id="guess" name="guess">
-      <input min="1" max="360" type="number">
+      <input min="1" max="360" type="number" step="1">
       <button>Palpite!</button>
     </form>
     <p id="displayTentativas">Tentativas: <span id="contadorTentativas">0</span></p>
@@ -30,17 +31,51 @@
   </div>
 
   <div class="window">
-    <div class="windowWin">
-      <button class="close">X</button>
-      <h2>Você ganhou!!! 🎉🎉🎉</h2>
-      
+    <div id="windowWin">
+      <button class="close"></button>
+      <h2>Você <span class="color-green">ganhou</span>!!! 🎉🎉🎉</h2>
+
+      <p class="s-20">A resposta era <u class="valor"></u></p>
+
       <button class="restartBtn">Jogar Novamente</button>
+    </div>
+  </div>
+
+  <div class="window">
+    <div id="windowLose">
+      <button class="close"></button>
+      <h2>Você <span class="color-red">Perdeu</span>!!! 😂😂😂</h2>
+
+      <p class="s-20">A resposta era <u class="valor"></u></p>
+
+      <button class="restartBtn">Jogar Novamente</button>
+    </div>
+  </div>
+
+  <div class="window">
+    <div id="windowConfig">
+      <button class="close"></button>
+      <h2>Configurações 🛠</h2>
+
+      <form>
+        <label for="min">Ângulo mínimo: </label>
+        <input type="number" name="min" id="min" placeholder="Padrão: 30" min="1" max="360">
+
+        <label for="max">Ângulo máximo: </label>
+        <input type="number" name="max" id="max" placeholder="Padrão: 330" min="1" max="360">
+        
+        <label for="tries">Número de tentativas: </label>
+        <input type="number" name="tries" id="tries" placeholder="Padrão: 4" min="1" max="30">
+
+        <button class="mt-2" type="submit">Aplicar</button>
+      </form>
     </div>
   </div>
 
   <div class="floatingButtons">
     <button class="restartBtn">Reiniciar</button>
-    <button id="configBtn" disabled>Configurações</button>
+    <button id="configBtn">Configurações</button>
+    <button id="themeBtn">Tema</button>
   </div>
 
   <script src="script.js" type="module"></script>

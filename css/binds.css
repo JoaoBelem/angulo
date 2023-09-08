@@ -1,0 +1,23 @@
+/*^ BINDS */
+
+.color-red{
+  color: rgb(255, 34, 34);
+}
+
+.color-green{
+  color: rgb(28, 255, 28);
+}
+
+.color-blue{
+  color: rgb(28, 28, 255);
+}
+
+.s-20{
+  font-size: 20px;
+}
+.mt-1{
+  margin-top: 1rem;
+}
+.mt-2{
+  margin-top: 2rem;
+}
