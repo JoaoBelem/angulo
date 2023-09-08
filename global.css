@@ -33,9 +33,9 @@ h1 {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: .5rem;
+  gap: 0.5rem;
 }
-input{
+input {
   font-family: 'Montserrat';
 }
 #guess input {
@@ -56,10 +56,10 @@ button {
 button:hover {
   background-color: #ddd;
 }
-button:disabled{
+button:disabled {
   opacity: 1;
 }
-button:disabled:hover{
+button:disabled:hover {
   background-color: inherit;
 }
 
@@ -91,9 +91,7 @@ button:disabled:hover{
 }
 
 .window {
-  opacity: 0;
-  pointer-events: none;
-  display: flex;
+  display: none;
   z-index: 100;
   position: fixed;
   width: 100vw;
@@ -104,9 +102,8 @@ button:disabled:hover{
   justify-content: center;
   align-items: center;
 }
-.window.show{
-  opacity: 1;
-  pointer-events: initial;
+.window.show {
+  display: flex;
 }
 .window div {
   padding: 2rem;
@@ -114,12 +111,25 @@ button:disabled:hover{
   background-color: #fff;
   text-align: center;
   position: relative;
+  animation: showUp .3s forwards;
 }
-.window input{
+
+@keyframes showUp{
+  from{
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
+
+.window input {
   border: 1px solid;
-  padding: .3rem .6rem;
+  padding: 0.3rem 0.6rem;
 }
-.close{
+.close {
   border: none;
   position: absolute;
   top: -1.25rem;
@@ -127,10 +137,10 @@ button:disabled:hover{
   aspect-ratio: 1 / 1;
   width: 2.5rem;
   cursor: pointer;
-  background: url('./public/img/close.svg')center center no-repeat #fff;
-  transition: transform .3s;
+  background: url('./public/img/close.svg') center center no-repeat #fff;
+  transition: transform 0.3s;
 }
-.close:hover{
+.close:hover {
   background-color: inherit;
   transform: scale(120%);
 }
@@ -143,35 +153,36 @@ h2 {
 .floatingButtons {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
   position: absolute;
   top: 1rem;
   left: 1rem;
+  min-width: 15vw;
 }
 
-#windowConfig form{
+#windowConfig form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
   text-align: left;
 
-  & button{
+  & button {
     grid-column: 1 / -1;
   }
 }
 
 @media (max-width: 600px) {
-  h1{
+  h1 {
     margin-top: 5rem;
   }
 
-  .window div{
+  .window div {
     width: 80vw;
     box-sizing: border-box;
   }
 
-  .floatingButtons{
+  .floatingButtons {
     flex-direction: row;
     justify-content: space-between;
     width: 90vw;
