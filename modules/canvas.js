@@ -28,7 +28,7 @@ export default function doCanvas() {
   //&
 
   //? ANGULO PARA RADIANO
-  function radian(angle) {
+  function rad(angle) {
     return Math.PI * (angle / 180);
   }
 
@@ -44,13 +44,13 @@ export default function doCanvas() {
     metadeTela,
     metadeTela,
     metadeTela / 4,
-    -Math.PI * 0.5 - radian(angulo / 2) + radian(grau),
-    -Math.PI / 2 + radian(angulo / 2) + radian(grau)
+    -Math.PI * 0.5 - rad(angulo / 2) + rad(grau),
+    -Math.PI / 2 + rad(angulo / 2) + rad(grau)
   );
   ctx.stroke();
-
+  
   //? ponteiro centro
-  const radianos = radian(grau) - Math.PI / 2;
+  const radianos = rad(grau) - Math.PI / 2;
   const xFinal = metadeTela + comprimentoPonteiro * Math.cos(radianos);
   const yFinal = metadeTela + comprimentoPonteiro * Math.sin(radianos);
 

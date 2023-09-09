@@ -35,8 +35,9 @@ export default function doWindow() {
         return { ...acumulador, [item.name]: item.value };
       }, null);
 
-    if (configValores !== null) localStorage['config'] = JSON.stringify(configValores);
+    localStorage['config'] = JSON.stringify(configValores);
     windowConfig.parentElement.classList.remove('show');
+    
     restart();
   });
 }
