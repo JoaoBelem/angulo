@@ -5,7 +5,7 @@ export default function doFloatingButtons() {
 
   theme
     ? (themeBtn.innerText = 'Tema claro 🌞')
-    : (themeBtn.innerText = 'Tema escuro 🌙');
+    : (themeBtn.innerText = 'Tema escuro 🌚');
 
   if (theme) document.body.classList.add('dark');
 
